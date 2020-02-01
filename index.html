@@ -32,11 +32,14 @@
 	gtag('config', 'UA-147393016-1');
 	</script>
 	<script>
-	function handleOutboundLinkClick(a) {
-		gtag('event', 'Click', {
+	function trackOutboundLinkClick(a) {
+		gtag('event', 'Link Click', {
   		'event_category': 'Outbound Link',
   		'event_label': a.href
 		});
+	}
+	function trackEvent(action) {
+		gtag('event', action);
 	}
 	</script>
 
@@ -63,7 +66,7 @@
 			<p>
 				Enhance credibility of your resume, website, article or tweet by spelling Xcode correctly
 				<br>
-				By <a href="https://hybridcattt.com" title="hybridcattt" target="_blank" onclick='handleOutboundLinkClick(this)'>hybridcattt</a>
+				By <a href="https://hybridcattt.com" title="hybridcattt" target="_blank" onclick='trackOutboundLinkClick(this)'>hybridcattt</a>
 			</p>
 		</footer>
 	</div>
@@ -71,7 +74,8 @@
 	<script src="https://unpkg.com/typer-js"></script>
 	<script src="js/typerscript.js"></script>
 
-	<script>window.twttr = (function(d, s, id) {
+	<script>
+	window.twttr = (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0],
 		t = window.twttr || {};
 		if (d.getElementById(id)) return t;
@@ -86,7 +90,25 @@
 		};
 
 		return t;
-	}(document, "script", "twitter-wjs"));</script>
+
+	}(document, "script", "twitter-wjs"));
+
+	twttr.ready(function (twttr) {
+		twttr.events.bind('click', function(e) {
+			trackEvent("Twitter button")
+	 });
+
+	 startTyper(
+		 function() {
+			 trackEvent("Typer started")
+		 },
+		 function() {
+			 trackEvent("Typer ended")
+		 }
+	 );
+ });
+
+</script>
 
 </body>
 </html>
