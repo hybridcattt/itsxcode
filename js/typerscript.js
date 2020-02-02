@@ -51,7 +51,12 @@ function startCustomTyper(correct, wrongArray, onTyperStart, onTyperEnd) {
     }
 
     if (cmnLenght != 0) {
-      back = -cmnLenght;
+      if (cmnLenght == previousValue.length) {
+        back = null; // nothing to erase
+      }
+      else {
+        back = -cmnLenght;
+      }
       text = value.substring(cmnLenght);
     }
 
@@ -85,14 +90,11 @@ function startCustomTyper(correct, wrongArray, onTyperStart, onTyperEnd) {
   commands.forEach(function(command, index, a) {
     t.pause(500);
 
-    if (command.quickBackspace) {
-      t.back(command.back, 50);
+    if (command.back != null) {
+      let backSpeed = command.quickBackspace ? 50 : 80;
+      t.back(command.back, backSpeed);
+      t.pause(250);
     }
-    else {
-      t.back(command.back, 80);
-    }
-
-    t.pause(250);
 
     if (command.customTypeSpeed != null) {
       t.continue(command.text, command.customTypeSpeed);
