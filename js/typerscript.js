@@ -1,11 +1,16 @@
 function startTyper(onTyperStart, onTyperEnd) {
   const params = getParams();
+  let correctTerm = ""
+  let wrongTerms = []
   if (params != null) {
-    startCustomTyper(params.correct, params.wrong, onTyperStart, onTyperEnd);
+    correctTerm = params.correct;
+    wrongTerms = params.wrong;
   }
   else {
-    startCustomTyper("Xcode", ["x-code", "xCode", "XCode"], onTyperStart, onTyperEnd);
+    correctTerm = "Xcode";
+    wrongTerms = ["x-code", "xCode", "XCode"];
   }
+  startCustomTyper(correctTerm, wrongTerms, onTyperStart, onTyperEnd);
 }
 
 function getParams() {
