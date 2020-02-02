@@ -75,6 +75,17 @@
 	<script src="js/typerscript.js"></script>
 
 	<script>
+	startTyper(
+		function() {
+			trackEvent("Typer started")
+		},
+		function() {
+			trackEvent("Typer ended")
+		}
+	);
+	</script>
+
+	<script>
 	window.twttr = (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0],
 		t = window.twttr || {};
@@ -97,15 +108,6 @@
 		twttr.events.bind('click', function(e) {
 			trackEvent("Twitter button")
 	 });
-
-	 startTyper(
-		 function() {
-			 trackEvent("Typer started")
-		 },
-		 function() {
-			 trackEvent("Typer ended")
-		 }
-	 );
  });
 
 </script>
