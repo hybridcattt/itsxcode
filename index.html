@@ -75,14 +75,7 @@
 	<script src="js/typerscript.js"></script>
 
 	<script>
-	startTyper(
-		function() {
-			trackEvent("Typer started")
-		},
-		function() {
-			trackEvent("Typer ended")
-		}
-	);
+	startTyper(trackEvent);
 	</script>
 
 	<script>

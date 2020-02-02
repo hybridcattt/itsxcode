@@ -1,4 +1,4 @@
-function startTyper(onTyperStart, onTyperEnd) {
+function startTyper(trackFunction) {
   const params = getParams();
   let correctTerm = ""
   let wrongTerms = []
@@ -10,7 +10,7 @@ function startTyper(onTyperStart, onTyperEnd) {
     correctTerm = "Xcode";
     wrongTerms = ["x-code", "xCode", "XCode"];
   }
-  startCustomTyper(correctTerm, wrongTerms, onTyperStart, onTyperEnd);
+  startCustomTyper(correctTerm, wrongTerms, trackFunction);
 }
 
 function getParams() {
@@ -26,7 +26,7 @@ function getParams() {
   }
 }
 
-function startCustomTyper(correct, wrongArray, onTyperStart, onTyperEnd) {
+function startCustomTyper(correct, wrongArray, trackFunction) {
   var strings = wrongArray.filter(function (str) {
     return str.length > 0;
   });
@@ -81,7 +81,7 @@ function startCustomTyper(correct, wrongArray, onTyperStart, onTyperEnd) {
   const element = document.querySelector('.xcode');
   const t = typer(element, { min: 70, max: 110 });
 
-  onTyperStart();
+  trackFunction("Typer started");
 
   t.line('');
   t.pause(500);
@@ -106,7 +106,7 @@ function startCustomTyper(correct, wrongArray, onTyperStart, onTyperEnd) {
 
   t.cursor('false');
   t.pause(200);
-  t.run(function() { onTyperEnd() });
+  t.run(function() { trackFunction("Typer ended") });
   t.end();
 }
 
