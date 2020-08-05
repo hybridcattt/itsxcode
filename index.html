@@ -23,26 +23,6 @@
 	<link rel="stylesheet" href="./static/css/style.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="https://unpkg.com/typer-js/typer.css">
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147393016-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-147393016-1');
-	</script>
-	<script>
-	function trackOutboundLinkClick(a) {
-		gtag('event', 'Link Click', {
-  		'event_category': 'Outbound Link',
-  		'event_label': a.href
-		});
-	}
-	function trackEvent(action) {
-		gtag('event', action);
-	}
-	</script>
-
 </head>
 
 <body>
@@ -66,7 +46,7 @@
 			<p>
 				Enhance credibility of your resume, website, article or tweet by spelling Xcode correctly
 				<br>
-				By <a href="https://hybridcattt.com" title="hybridcattt" target="_blank" onclick='trackOutboundLinkClick(this)'>hybridcattt</a>
+				By <a class="author" href="https://hybridcattt.com" title="hybridcattt" target="_blank">hybridcattt</a>
 			</p>
 		</footer>
 	</div>
@@ -77,10 +57,10 @@
 	<script>
 	startTyper(
 		function() {
-			trackEvent("Typer started")
+			console.log("Typer started")
 		},
 		function() {
-			trackEvent("Typer ended")
+			console.log("Typer ended")
 		}
 	);
 	</script>
@@ -106,11 +86,14 @@
 
 	twttr.ready(function (twttr) {
 		twttr.events.bind('click', function(e) {
-			trackEvent("Twitter button")
+			console.log("Twitter button")
 	 });
  });
 
 </script>
+
+<script data-goatcounter="https://itsxcode.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
