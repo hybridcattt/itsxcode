@@ -78,7 +78,7 @@ footer {
 	justify-content: flex-end;
 }
 
-footer a {
+footer .author {
 	font-weight: bolder;
 	color: gray;
 }
@@ -88,6 +88,11 @@ footer p {
 	text-align: right;
 	line-height: 1.5rem;
 	margin: 0;
+}
+
+footer .sharing {
+	display: flex;
+	flex-direction: row;
 }
 
 /***** Responsiveness *****/
