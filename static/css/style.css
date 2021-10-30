@@ -96,7 +96,7 @@ footer .sharing {
 }
 
 /***** Responsiveness *****/
-@media all and (max-width: 600px) {
+@media all and (max-width: 750px) {
 	html, body {
 		font-size: 11px;
 	}
